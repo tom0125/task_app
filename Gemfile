@@ -7,7 +7,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'sass-rails', '~> 5.0'
@@ -34,6 +34,10 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
+end
+
+group :production do
+  gem 'pg', '~> 1.1.4'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
