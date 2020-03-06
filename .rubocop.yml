@@ -7,7 +7,7 @@ require:
 
 AllCops:
   #Rubyバージョン指定
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.5.7
   #除外
   Exclude:
     - 'config.ru'
@@ -23,13 +23,25 @@ AsciiComments:
   Enables: false
 
 #クラスのコメント必須を無視
-Documentation:
+Style/Documentation:
   Enabled: false
 
 #モジュール名::クラス名の定義を許可
-ClassAndModuleChildren:
+Style/ClassAndModuleChildren:
   Enabled: false
 
 #文字リテラルのイミュータブル宣言を無視
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# For rubocop < 1.0.0
+Style/HashEachMethods:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformKeys:
+  Enabled: true
+
+# For rubocop < 1.0.0
+Style/HashTransformValues:
+  Enabled: true

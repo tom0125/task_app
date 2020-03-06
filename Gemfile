@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 1.1.4'
-gem 'puma',         '3.9.1'
+gem 'puma', '3.9.1'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
@@ -34,10 +34,6 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'chromedriver-helper'
   gem 'selenium-webdriver'
-end
-
-group :production do
-  gem 'pg', '~> 1.1.4'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
