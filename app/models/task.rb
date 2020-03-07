@@ -5,6 +5,8 @@ class Task < ApplicationRecord
   validate :validate_name_not_including_comma
 
   belongs_to :user
+  scope :recent, -> { order(created_at: :desc) }
+
   private
 
   def set_nameless_name
