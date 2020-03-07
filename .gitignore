@@ -12,6 +12,9 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+# bundler: failed to load command: puma (/app/vendor/bundle/ruby/2.5.0/bin/puma)
+# Errno::ENOENT: No such file or directory @ rb_sysopen - tmp/pids/server.pid @heroku 
+#/tmp/pids のみgitで管理
 !/tmp/pids
 
 # Ignore uploaded files in development
