@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :task do
-    name { "MyString" }
-    description { "MyText" }
+    name { 'テストを書く' }
+    description { 'Rspec & Capybara & FactoryBotを準備する' }
+    user
   end
 end
