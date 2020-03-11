@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="/tasks">
+  <img id="profile-img" class="profile-img-card" src="/2_Flat_logo_on_transparent_241x69.png" />
+  </a>
   <ul class="navbar-nav ml-auto">
   <%if current_user%>
     <li class="nav-item"><%=link_to 'タスク一覧', tasks_path, class: 'nav-link' %></li>

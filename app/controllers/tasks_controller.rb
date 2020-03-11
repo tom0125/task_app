@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   # scope :recent, -> { order(created_at: :desc) }
   def index
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true).recent
+    @tasks = @q.result(distinct: true)
   end
 
   def show
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:name, :description, :note)
   end
 
   # idパラメータからタスクオブジェクトを検索して@taskに代入する

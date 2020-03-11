@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, notice: 'ログインしました'
     else
+      flash.now[:alert] = '・メールアドレス、もしくはパスワードが違います'
       render :new
     end
   end

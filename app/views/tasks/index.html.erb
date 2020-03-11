@@ -23,19 +23,21 @@
 
 <div class="mb-3"></div>
 
-  <table class="table table-hover">
+  <table class="table table-striped">
     <thead class="thead-default">
       <tr>
         <th><%=sort_link(@q, :name, default_order: :desc)%></th>
         <th><%=Task.human_attribute_name(:created_at)%></th>
+        <th><%=Task.human_attribute_name(:note)%></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <%@tasks.each do |task|%>
         <tr>
-          <td><%=link_to task.name,task_path(task)%></td>
-          <td><%=task.created_at%></td>
+          <td><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
+          <td><%=task.created_at.to_s(:datetime_jp)%></td>
+          <td><%=truncate(task.note, length: 10)%></td>
           <td>
             <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary mr-3 '%>
             <%=link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger '%>

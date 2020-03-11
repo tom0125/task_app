@@ -1,14 +1,25 @@
-<h1>ログイン</h1>
-<%=form_with scope: :session, local: true do |f|%>
-<div class="form-group">
-  <%=f.label :email, 'メールアドレス'%>
-  <%=f.text_field :email, class: 'form-control', id: 'session_email'%>
-</div>
+     
+    <%=form_with scope: :session, local: true do |f|%>
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="/2_Flat_logo_on_transparent_241x69.png" />
+            <%if flash[:alert].present?%>
+              <p id="errorMsg"><%=flash[:alert]%></p>
+            <%end%>
+          
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <%=f.text_field :email, class: 'form-control mb-2', id: 'session_email', placeholder: "メールアドレス" %>
+                <%=f.password_field :password, class: 'form-control mb-4', id: 'session_password', placeholder: "パスワード"%>
+        
+                <%=f.submit 'ログインする',class: 'btn btn-lg btn-primary btn-block btn-signin'%>
+                <%end%>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
 
-<div class="form-group">
-  <%=f.label :password, 'パスワード'%>
-  <%=f.password_field :password, class: 'form-control', id: 'session_password'%>
-</div>
 
-<%=f.submit 'ログインする',class: 'btn btn-primary'%>
-<%end%>
+
+    
