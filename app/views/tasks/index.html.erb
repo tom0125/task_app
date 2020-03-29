@@ -60,7 +60,7 @@
         <%@tasks.each_with_index do |task, i|%>
           <%unless task.done?%>
             <tr>
-              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
+              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 15),task_path(task)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
@@ -91,7 +91,7 @@
         <%@tasks.each_with_index do |task, i|%>
           <%if task.done?%>
             <tr>
-              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
+              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 15),task_path(task)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
@@ -121,7 +121,7 @@
       <tbody>
         <%@tasks.each_with_index do |task, i|%>
           <tr>
-            <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task[:name], length: 10),task_path(task)%></td>
+            <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task[:name], length: 15),task_path(task)%></td>
             <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
             <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
             <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>

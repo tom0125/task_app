@@ -13,12 +13,21 @@
                 <span id="reauth-email" class="reauth-email"></span>
                 <%=f.text_field :email, class: 'form-control mb-2', id: 'session_email', placeholder: "メールアドレス" %>
                 <%=f.password_field :password, class: 'form-control mb-4', id: 'session_password', placeholder: "パスワード"%>
-        
                 <%=f.submit 'ログインする',class: 'btn btn-lg btn-primary btn-block btn-signin'%>
+                <%end%>
+
+            <!--テストユーザー用ログイン-->
+                <%=form_with scope: :session, local: true do |f|%>
+                    <%= f.hidden_field :email, value: 'tomoya0125yt@gmail.com' %>
+                    <%= f.hidden_field :password, value: '975210' %>
+                    <%= f.submit 'テストログイン', class: 'btn btn-lg btn-primary btn-block btn-signin mt-2' %>
                 <%end%>
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
+
+
+            
 
 
 
