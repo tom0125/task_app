@@ -18,9 +18,10 @@
 
             <!--テストユーザー用ログイン-->
                 <%=form_with scope: :session, local: true do |f|%>
-                    <%= f.hidden_field :email, value: 'tomoya0125yt@gmail.com' %>
-                    <%= f.hidden_field :password, value: '975210' %>
-                    <%= f.submit 'テストログイン', class: 'btn btn-lg btn-primary btn-block btn-signin mt-2' %>
+                    <%= f.hidden_field :email, value: 'admin@gmail.com' %>
+                    <%= f.hidden_field :password, value: 'password' %>
+                    <%= f.submit 'テストログイン', class: 'btn btn-lg btn-primary btn-block btn-signin mt-2
+                    ' %>
                 <%end%>
             </form><!-- /form -->
         </div><!-- /card-container -->
