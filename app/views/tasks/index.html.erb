@@ -1,5 +1,6 @@
 <h1>タスク一覧</h1>
 <%=search_form_for @q, class: 'mb-5' do |f|%>
+<div class="card card-body">
 <div class="form-group row">
   <%=f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'%>
   <div class="col-sm-10">
@@ -14,8 +15,16 @@
   </div>
 </div>
 
+<div class="form-group row">
+  <%=f.label :deadline_cont, '期限', class: 'col-sm-2 col-form-label'%>
+  <div class="col-sm-10">
+    <%=f.search_field :deadline_cont, class:'form-control'%>
+  </div>
+</div>
+
 <div class="form-group">
   <%=f.submit class: 'btn btn-outline-primary'%>
+</div>
 </div>
 <%end%>
 
@@ -23,28 +32,132 @@
 
 <div class="mb-3"></div>
 
-  <table class="table table-striped">
-    <thead class="thead-default">
-      <tr>
-        <th><%=sort_link(@q, :name, default_order: :desc)%></th>
-        <th><%=Task.human_attribute_name(:created_at)%></th>
-        <th><%=Task.human_attribute_name(:note)%></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%@tasks.each do |task|%>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">未実行</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">実行済</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item3-tab" data-toggle="tab" href="#item3" role="tab" aria-controls="item3" aria-selected="false">全てのタスク</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+    <table class="table table-striped">
+      <thead class="thead-default">
         <tr>
-          <td><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
-          <td><%=task.created_at.to_s(:datetime_jp)%></td>
-          <td><%=truncate(task.note, length: 10)%></td>
-          <td>
-            <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary mr-3 '%>
-            <%=link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger '%>
-
-          </td>
+          <th><%=Task.human_attribute_name(:name)%></th>
+          <th><%=sort_link(@q, :created_at, default_order: :desc)%></th>
+          <th><%=Task.human_attribute_name(:note)%></th>
+          <th><%=sort_link(@q, :deadline, default_order: :desc)%></th>
+          <th></th>
         </tr>
-      <%end%>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <%@tasks.each_with_index do |task, i|%>
+          <%unless task.done?%>
+            <tr>
+              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
+              <td id="1">
+                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
+                <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
+                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+              </td>
+            </tr>
+          <%end%>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
 
+  <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
+    <table class="table table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th><%=Task.human_attribute_name(:name)%></th>
+          <th><%=sort_link(@q, :created_at, default_order: :desc)%></th>
+          <th><%=Task.human_attribute_name(:note)%></th>
+          <th><%=sort_link(@q, :deadline, default_order: :desc)%></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@tasks.each_with_index do |task, i|%>
+          <%if task.done?%>
+            <tr>
+              <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task.name, length: 10),task_path(task)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
+              <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
+              <td id="1">
+                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
+                <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
+                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+              </td>
+            </tr>
+          <%end%>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
+    <table class="table table-striped">
+      <thead class="thead-default">
+        <tr>
+          <th><%=Task.human_attribute_name(:name)%></th>
+          <th><%=sort_link(@q, :created_at, default_order: :desc)%></th>
+          <th><%=Task.human_attribute_name(:note)%></th>
+          <th><%=sort_link(@q, :deadline, default_order: :desc)%></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%@tasks.each_with_index do |task, i|%>
+          <tr>
+            <td <%=task.done? ? 'class = done ' : '' %>><%=link_to truncate(task[:name], length: 10),task_path(task)%></td>
+            <td <%=task.done? ? 'class = done' : '' %>><%=task.created_at.to_s(:datetime_jp_date)%></td>
+            <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
+            <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
+            <td id="1">
+              <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
+              <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
+              <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<script>
+ $("a[class~='btn-done']").click(function() {
+   $(this).closest("tr").children('td:nth-of-type(-n+4)').toggleClass('done');
+   if($(this).text() == "実行済"){
+     $(this).text("未実行");
+   }else{
+     $(this).text("実行済");
+   }
+ });
+</script>
+
+<script>
+ $("a[class~='btn-delete']").click(function() {
+   $(this).closest("tr").toggle();
+ });
+</script>
+
+<script>
+  $("item2-tab").click(function() {
+   $(this).closest("tr").toggle();
+ });
+</script>

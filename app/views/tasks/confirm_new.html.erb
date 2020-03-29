@@ -21,6 +21,12 @@
       <td><%=simple_format(@task.note)%></td>
       <%=f.hidden_field :note%>
     </tr>
+
+    <tr>
+      <th><%=Task.human_attribute_name(:deadline)%></th>
+      <td><%=@task.deadline%></td>
+      <%=f.hidden_field :deadline%>
+    </tr>
   </tbody>
 </table>
 <%=f.submit '戻る', name: 'back', class: 'btn btn-secondary mr-3'%>

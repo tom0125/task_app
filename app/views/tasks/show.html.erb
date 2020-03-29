@@ -23,6 +23,10 @@
       <td><%=auto_link(simple_format(h(@task.note), {}, sanitize: false, wrapper_tag: "div"))%></td>
     </tr>
     <tr>
+      <th><%=Task.human_attribute_name(:deadline)%></th>
+      <td><%=@task.deadline%></td>
+    </tr>
+    <tr>
       <th><%=Task.human_attribute_name(:created_at)%></th>
       <td><%=@task.created_at.to_s(:datetime_jp)%></td>
     </tr>

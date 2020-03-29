@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   class << self
     def ransackable_attributes(auth_object = nil)
-      %w[name created_at]
+      %w[name created_at deadline]
     end
 
     def ransackable_associations(auth_object = nil)

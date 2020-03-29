@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  
   # before_actionメソッドを利用してset_taskメソッドを各アクション実行前に呼び出し
   before_action :set_task, only: %i[show edit update destroy]
 
@@ -48,14 +49,28 @@ class TasksController < ApplicationController
     redirect_to tasks_url, notice: "タスク「#{@task.name}を削除しました。」"
   end
 
+  def done_change
+    @q = current_user.tasks.ransack(params[:q])
+    @tasks = @q.result(distinct: true)
+    @task = current_user.tasks.find(params[:task_id])
+    if @task.done?
+      @task.update(done: false)
+    else
+      @task.update(done: true)
+    end
+    render json: @tasks
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :note)
+    params.require(:task).permit(:name, :description, :note, :deadline)
   end
 
   # idパラメータからタスクオブジェクトを検索して@taskに代入する
   def set_task
     @task = current_user.tasks.find(params[:id])
   end
+
+
 end
