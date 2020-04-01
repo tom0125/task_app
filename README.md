@@ -2,6 +2,7 @@
 
 タスク管理機能、ユーザー登録機能を備えたアプリケーションです。  
 リンクは以下に記載しております。  
+*heroku起動に10秒ほど時間がかかる場合がございます
 
 https://to-do-task-app.herokuapp.com/login
 
@@ -33,3 +34,5 @@ https://to-do-task-app.herokuapp.com/login
 * Rubocop
 * test-- Rspec　
 * Heroku
+
+
