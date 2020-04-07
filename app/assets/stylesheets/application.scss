@@ -147,3 +147,13 @@
 .done-button{
   background-color: red;
 }
+
+/*tableをタテ表示に
+親要素に「display: flex」を設定するだけで、子要素が横並びになります。
+.table th, .table td{
+  display: flex;
+}
+
+*/
+
+

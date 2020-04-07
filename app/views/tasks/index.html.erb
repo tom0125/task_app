@@ -65,9 +65,9 @@
               <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
               <td id="1">
-                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
-                <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
-                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-outline-primary btn-done mr-3 ', id: 'btn'%>
+                <%=link_to '編集', edit_task_path(task),class: 'btn btn-outline-success fas fa-edit mr-3 '%>
+                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-outline-danger fas fa-trash-alt'%>
               </td>
             </tr>
           <%end%>
@@ -96,9 +96,9 @@
               <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
               <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
               <td id="1">
-                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
-                <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
-                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+                <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-outline-primary btn-done mr-3 ', id: 'btn'%>
+                <%=link_to '編集', edit_task_path(task),class: 'btn btn-outline-success fas fa-edit mr-3 '%>
+                <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-outline-danger fas fa-trash-alt'%>
               </td>
             </tr>
           <%end%>
@@ -126,9 +126,9 @@
             <td <%=task.done? ? 'class = done' : '' %>><%=truncate(task.note, length: 10)%></td>
             <td <%=task.done? ? 'class = done' : '' %>><%=task.deadline%></td>
             <td id="1">
-              <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-primary btn-done mr-3 ', id: 'btn'%>
-              <%=link_to '編集', edit_task_path(task),class: 'btn btn-primary btn-edit mr-3 '%>
-              <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-danger btn-delete '%>
+              <%=link_to task.done? ? '実行済' : '未実行', task_done_path(task),remote: true, method: :patch, class: 'btn btn-outline-primary btn-done mr-3 ', id: 'btn'%>
+              <%=link_to '編集', edit_task_path(task),class: 'btn btn-outline-success fas fa-edit mr-3 '%>
+              <%=link_to '削除', task, remote: true, method: :delete, data: { confirm: "タスク「#{task.name}を削除します。よろしいですか？」"}, class: 'btn btn-outline-danger fas fa-trash-alt'%>
             </td>
           </tr>
         <%end%>
