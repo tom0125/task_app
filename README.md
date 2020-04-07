@@ -1,24 +1,38 @@
-# README
+# タスクAPP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+タスク管理機能、ユーザー登録機能を備えたアプリケーションです。  
+リンクは以下に記載しております。  
+*heroku起動に10秒ほど時間がかかる場合がございます
 
-Things you may want to cover:
+https://to-do-task-app.herokuapp.com/login
 
-* Ruby version
+#### 概要
+タスク管理アプリ
 
-* System dependencies
+#### 機能
+* ユーザー管理
+* ログイン
+* ログアウト
+* タスク検索機能(作成日時・期限・名称)
+* タスク並べ替え機能（登録日時・期限）
+* タスク作成
+* タスク一覧表示(タスクを実行済にする機能など、一部非同期通信に対応)
+* タスク削除
+* タスク編集 
+* CSRF対策
+* クロスサイトスクリプティング（XSS）対策
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+#### 開発環境・使用言語
+* visual studio code
+* Ruby version 2.5.4
+* Ruby on Rails version 5.2
+* PostgreSql
+* Bootstrap
+* Jquery
+* Rubocop
+* test-- Rspec　
+* Heroku
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
